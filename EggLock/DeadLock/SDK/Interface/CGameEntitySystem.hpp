@@ -7,13 +7,31 @@
 class C_BaseEntity;
 class CCitadelPlayerController;
 
+struct CEntityIdentity
+{
+	void* m_pEntity;
+};
+
 class CGameEntitySystem
 {
 public:
-	template<typename T = C_BaseEntity>
-	auto GetBaseEntity( int iIndex ) -> T*
+	auto GetBaseEntity( int index ) -> C_BaseEntity*
 	{
-		return (T*)CGameEntitySystem_GetBaseEntity( this , iIndex );
+		if ( (unsigned int)index > 0x7FFE )
+			return nullptr;
+
+		if ( (unsigned int)( index >> 9 ) > 0x3F )
+			return nullptr;
+
+		auto chunks = *(uintptr_t*)( (uintptr_t)this + 8i64 * ( index >> 9 ) + 16 );
+		if ( !chunks )
+			return nullptr;
+
+		auto identity = 120i64 * ( index & 0x1FF ) + chunks;
+		if ( !identity )
+			return nullptr;
+
+		return ( (CEntityIdentity*)identity )->m_pEntity;
 	}
 
 public:
@@ -36,6 +54,9 @@ public:
 	{
 		return CGameEntitySystem_GetLocalCitadelPlayerController( -1 );
 	}
+
+	// Offset for HighestEntityIndex in the entity system
+	static constexpr int m_iHighestEntityIndex = 0x1510;
 };
 
 #define FOR_EACH_ENTITY( idx_name ) \

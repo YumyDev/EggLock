@@ -37,6 +37,10 @@ public:
 	CBasePattern C_EnvSky_Update = { VmpStr( "C_EnvSky::Update" ) , VmpStr( "40 53 48 83 EC 30 48 8B D9 E8 ? ? ? ? 48 8B 43" ) , CLIENT_DLL , 0 , SEARCH_TYPE_NONE };
 	CBasePattern C_BaseEntity_GetBoneIdByName = { VmpStr( "C_BaseEntity::GetBoneIdByName" ) , VmpStr( "40 53 48 83 EC 20 48 8B 89 ? ? ? ? 48 8B DA 48 8B 01 FF 50 ? 48 8B C8" ) , CLIENT_DLL , 0 , SEARCH_TYPE_NONE };
 	CBasePattern C_BaseEntity_GetHitBoxSet = { VmpStr( "C_BaseEntity::GetHitBoxSet" ) , VmpStr( "48 89 5C 24 ? 48 89 74 24 ? 57 48 81 EC 40 01 00 00 8B DA" ) , CLIENT_DLL , 0 , SEARCH_TYPE_NONE };
+	CBasePattern C_BaseModelEntity_LookupBone = { VmpStr( "C_BaseModelEntity::LookupBone" ) , VmpStr( "E8 ? ? ? ? 83 F8 ? 74 ? 4C 8D 4D" ) , CLIENT_DLL , 0 , SEARCH_TYPE_CALL };
+	CBasePattern C_BaseModelEntity_GetBonePosition = { VmpStr( "C_BaseModelEntity::GetBonePosition" ) , VmpStr( "48 89 6C 24 ? 48 89 74 24 ? 48 89 7C 24 ? 41 56 48 83 EC ? 4D 8B F1 49 8B E8 8B F2" ) , CLIENT_DLL , 0 , SEARCH_TYPE_NONE };
+	CBasePattern CGameEntitySystem_dwEntityList = { VmpStr( "CGameEntitySystem::dwEntityList" ) , VmpStr( "44 89 BF ? ? ? ? 4C 89 3D ? ? ? ?" ) , CLIENT_DLL , 0 , SEARCH_TYPE_PTR };
+	CBasePattern CCitadelInput_GetLocalPlayerController = { VmpStr( "CCitadelInput::GetLocalPlayerController" ) , VmpStr( "48 8B 05 ? ? ? ? 48 85 C0 0F 84 ? ? ? ? 8B 90" ) , CLIENT_DLL , 0 , SEARCH_TYPE_PTR };
 };
 
 auto GetFunctionList() -> CFunctionList*;

@@ -1,0 +1,43 @@
+# Build outputs
+*.exe
+*.dll
+*.pdb
+*.obj
+*.lib
+*.log
+*.ilk
+*.ipdb
+*.iobj
+*.pch
+
+# Directories
+x64/
+x86/
+Debug/
+Release/
+.vs/
+Loader/*.exe
+Loader/*.dll
+Loader/*.obj
+
+# Python
+*.py
+*.pyc
+__pycache__/
+
+# JSON config
+patterns.json
+
+# User files
+*.user
+*.suo
+*.ncb
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.VC.opendb
+
+# Temp
+*.tmp
+*.bak
+*~
